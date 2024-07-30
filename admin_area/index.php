@@ -8,6 +8,8 @@
      <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- BUG -->
     <style>
         .admin_image {
@@ -47,9 +49,9 @@
                 <div class="button text-center">
                     <button><a href="" class="nav-link text-light bg-info m-1">Insert Products</a></button>
                     <button><a href="" class="nav-link text-light bg-info m-1">View products</a></button>
-                    <button><a href="" class="nav-link text-light bg-info m-1">Insert Categories</a></button>
+                    <button><a href="index.php?insert_category" class="nav-link text-light bg-info m-1">Inserte Categorias</a></button>
                     <button><a href="" class="nav-link text-light bg-info m-1">View Categories</a></button>
-                    <button><a href="" class="nav-link text-light bg-info m-1">Insert Servicios</a></button>
+                    <button><a href="index.php?insert_services" class="nav-link text-light bg-info m-1">Inserte Servicios</a></button> <!-- services -> brands -->
                     <button><a href="" class="nav-link text-light bg-info m-1">View Servicios</a></button>
                     <button><a href="" class="nav-link text-light bg-info m-1">All Orders</a></button>
                     <button><a href="" class="nav-link text-light bg-info m-1">All Payments</a></button>
@@ -60,7 +62,18 @@
           </div>
      </div>
 
+    <!-- Fourth child -->
 
+    <div class="container my-5">
+        <?php 
+        if(isset($_GET['insert_category'])){
+            include('insert_categories.php');
+        }
+        if(isset($_GET['insert_services'])){
+            include('insert_services.php');
+        }
+        ?>
+    </div>
 
 
     <!-- Last child -->
