@@ -1,3 +1,7 @@
+<!-- connect file -->
+<?php
+include('includes/connect.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -120,36 +124,44 @@
                     <li class="navbar-item bg-info">
                         <a href="#" class="nav-link text-light"><h4>Categorias</h4></a>
                     </li>
-                    <li class="navbar-item">
-                        <a href="#" class="nav-link text-light">Papel</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="#" class="nav-link text-light">Cartulina</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="#" class="nav-link text-light">Film</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="#" class="nav-link text-light">Plastico</a>
-                    </li>
+                    <!-- DISPLAY SERVICES -->
+                    <?php
+
+                        $select_category="SELECT * FROM `categories`";
+                        $result_category=mysqli_query($con,$select_category);
+                        //$row_data=mysqli_fetch_assoc($result_category);
+                        while($row_data=mysqli_fetch_assoc($result_category)){
+                            $category_title=$row_data['category_title'];
+                            $category_id=$row_data['category_id'];
+                            echo "<li class='navbar-item'>
+                        <a href='index.php?category=$category_id' class='nav-link text-light'>$category_title</a>
+                        </li>";
+                        }
+
+
+                ?>
                 </ul>
                 <!--Servicios-->
                 <ul class="navbar-nav me-auto text-center">
                     <li class="navbar-item bg-info">
                         <a href="#" class="nav-link text-light"><h4>Servicios</h4></a>
                     </li>
-                    <li class="navbar-item">
-                        <a href="#" class="nav-link text-light">Servicios1</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="#" class="nav-link text-light">Servicios2</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="#" class="nav-link text-light">Servicios3</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="#" class="nav-link text-light">Servicios4</a>
-                    </li>
+                    <!-- DISPLAY SERVICES -->
+                    <?php
+
+                        $select_services="SELECT * FROM `services`";
+                        $result_services=mysqli_query($con,$select_services);
+                        //$row_data=mysqli_fetch_assoc($result_services);
+                        while($row_data=mysqli_fetch_assoc($result_services)){
+                            $services_title=$row_data['services_title'];
+                            $services_id=$row_data['services_id'];
+                            echo "<li class='navbar-item'>
+                        <a href='index.php?services=$services_id' class='nav-link text-light'>$services_title</a>
+                    </li>";
+                        }
+
+
+                    ?>
                 </ul>
             </div>
         </div>
