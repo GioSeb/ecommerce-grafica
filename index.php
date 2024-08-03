@@ -1,6 +1,7 @@
 <!-- connect file -->
 <?php
 include('includes/connect.php');
+include('functions/common_function.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,54 +68,17 @@ include('includes/connect.php');
 
         <!-- Fourth child -->
 
-        <div class="row">
+        <div class="row px-1">
             <div class="col md-10">
                 <!-- products -->
                 <div class="row">
-                    <div class="col-md-4 mb-2">
-                        <div class="card">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-info">Agregar al carrito</a>
-                                <a href="#" class="btn btn-secondary">Ver más</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-2">
-                        <div class="card">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-info">Agregar al carrito</a>
-                                <a href="#" class="btn btn-secondary">Ver más</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-2">
-                        <div class="card">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-info">Agregar al carrito</a>
-                                <a href="#" class="btn btn-secondary">Ver más</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-2">
-                        <div class="card">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-info">Agregar al carrito</a>
-                                <a href="#" class="btn btn-secondary">Ver más</a>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Card -->
+                    <!-- Fetching products -->
+                    <?php
+                    // Calling function to get products
+                    getProducts();
+
+                    ?>
                 </div>
             </div>
           <!-- sidenav -->
@@ -124,22 +88,13 @@ include('includes/connect.php');
                     <li class="navbar-item bg-info">
                         <a href="#" class="nav-link text-light"><h4>Categorias</h4></a>
                     </li>
-                    <!-- DISPLAY SERVICES -->
+                    <!-- DISPLAY categories -->
                     <?php
 
-                        $select_category="SELECT * FROM `categories`";
-                        $result_category=mysqli_query($con,$select_category);
-                        //$row_data=mysqli_fetch_assoc($result_category);
-                        while($row_data=mysqli_fetch_assoc($result_category)){
-                            $category_title=$row_data['category_title'];
-                            $category_id=$row_data['category_id'];
-                            echo "<li class='navbar-item'>
-                        <a href='index.php?category=$category_id' class='nav-link text-light'>$category_title</a>
-                        </li>";
-                        }
+                    // Calling display categories
+                    getCategories();
 
-
-                ?>
+                    ?>
                 </ul>
                 <!--Servicios-->
                 <ul class="navbar-nav me-auto text-center">
@@ -149,16 +104,8 @@ include('includes/connect.php');
                     <!-- DISPLAY SERVICES -->
                     <?php
 
-                        $select_services="SELECT * FROM `services`";
-                        $result_services=mysqli_query($con,$select_services);
-                        //$row_data=mysqli_fetch_assoc($result_services);
-                        while($row_data=mysqli_fetch_assoc($result_services)){
-                            $services_title=$row_data['services_title'];
-                            $services_id=$row_data['services_id'];
-                            echo "<li class='navbar-item'>
-                        <a href='index.php?services=$services_id' class='nav-link text-light'>$services_title</a>
-                    </li>";
-                        }
+                    // Calling get services
+                    getServices();                        
 
 
                     ?>
