@@ -77,6 +77,7 @@ include('functions/common_function.php');
                     <?php
                     // Calling function to get products
                     getProducts();
+                    getUniqueCategories();
 
                     ?>
                 </div>
