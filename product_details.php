@@ -76,11 +76,11 @@ include('functions/common_function.php');
             <div class="col md-10">
                 <!-- products -->
                 <div class="row">
-                    <!-- Card -->
+                    
                     <!-- Fetching products -->
                     <?php
                     // Calling function to get products
-                    getProducts();
+                    viewDetails();
                     getUniqueCategories();
 
                     ?>

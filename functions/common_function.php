@@ -27,7 +27,40 @@ function getProducts(){
                 <h5 class='card-title'>$product_title</h5>
                 <p class='card-text'>$product_description</p>
                 <a href='#' class='btn btn-info'>Agregar al carrito</a>
-                <a href='#' class='btn btn-secondary'>Ver más</a>
+                <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>Ver más</a>
+            </div>
+        </div>
+    </div>";
+    }
+    }
+}
+
+// getting all products
+
+function getAllProducts(){
+    global $con;
+
+    // condition to check  category isset or not
+    if(!isset($_GET['category'])){
+    $select_query="SELECT * FROM `products` ORDER BY product_title ORDER BY rand()";
+    $result_query=mysqli_query($con,$select_query);
+    //$row=mysqli_fetch_assoc($result_query);
+    //echo $row['product_title'];
+    while($row=mysqli_fetch_assoc($result_query)){
+        $product_id=$row['product_id'];
+        $product_title=$row['product_title'];
+        $product_description=$row['product_description'];
+        $product_image=$row['product_image'];
+        $product_price=$row['product_price'];
+        $category_id=$row['category_id'];
+        echo "<div class='col-md-4 mb-2'>
+        <div class='card'>
+            <img src='./admin_area/product_images/$product_image' class='card-img-top' alt='$product_title'>
+            <div class='card-body'>
+                <h5 class='card-title'>$product_title</h5>
+                <p class='card-text'>$product_description</p>
+                <a href='#' class='btn btn-info'>Agregar al carrito</a>
+                <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>Ver más</a>
             </div>
         </div>
     </div>";
@@ -64,7 +97,7 @@ function getUniqueCategories(){
                 <h5 class='card-title'>$product_title</h5>
                 <p class='card-text'>$product_description</p>
                 <a href='#' class='btn btn-info'>Agregar al carrito</a>
-                <a href='#' class='btn btn-secondary'>Ver más</a>
+                <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>Ver más</a>
             </div>
         </div>
     </div>";
@@ -103,5 +136,93 @@ function getServices(){
             </li>";
         }
 }
+
+// searching products
+
+function search_product(){
+    global $con;
+
+    if(isset($_GET['search_data_product'])){
+        $search_data_value=$_GET['search_data'];
+        $search_query="SELECT * FROM `products` WHERE product_keywords LIKE '%$search_data_value%'";
+        $result_query=mysqli_query($con,$search_query);
+        //$row=mysqli_fetch_assoc($result_query);
+        //echo $row['product_title'];
+        $num_of_rows=mysqli_num_rows($result_query);
+        if($num_of_rows==0){
+            echo "<h2 class='text-center text-danger'>No stock for the product.</h2>";
+        }
+        while($row=mysqli_fetch_assoc($result_query)){
+            $product_id=$row['product_id'];
+            $product_title=$row['product_title'];
+            $product_description=$row['product_description'];
+            $product_image=$row['product_image'];
+            $product_price=$row['product_price'];
+            $category_id=$row['category_id'];
+            echo "<div class='col-md-4 mb-2'>
+            <div class='card'>
+                <img src='./admin_area/product_images/$product_image' class='card-img-top' alt='$product_title'>
+                <div class='card-body'>
+                    <h5 class='card-title'>$product_title</h5>
+                    <p class='card-text'>$product_description</p>
+                    <a href='#' class='btn btn-info'>Agregar al carrito</a>
+                    <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>Ver más</a>
+                </div>
+            </div>
+        </div>";
+        }
+    }
+}
+
+//view details
+
+function viewDetails(){
+    global $con;
+
+    // condition to check  category isset or not
+    if(isset($_GET['product_id'])){
+        if(!isset($_GET['category'])){
+            $product_id=$_GET['product_id'];
+            $select_query="SELECT * FROM `products` WHERE product_id=$product_id";
+            $result_query=mysqli_query($con,$select_query);
+            //$row=mysqli_fetch_assoc($result_query);
+            //echo $row['product_title'];
+            while($row=mysqli_fetch_assoc($result_query)){
+                $product_id=$row['product_id'];
+                $product_title=$row['product_title'];
+                $product_description=$row['product_description'];
+                $product_image=$row['product_image'];
+                $product_price=$row['product_price'];
+                $category_id=$row['category_id'];
+                echo "<div class='col-md-4 mb-2'>
+                    <div class='card'>
+                        <img src='./admin_area/product_images/$product_image' class='card-img-top' alt='$product_title'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>$product_title</h5>
+                            <p class='card-text'>$product_description</p>
+                            <a href='#' class='btn btn-info'>Agregar al carrito</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class='col-md-8'>
+                                <!-- related  -->
+                                <div class='row'>
+                                    <div class='col-md-12'>
+                                        <h4 class='text-center text-info mb-5'>Related products</h4>
+                                    </div>
+                                    <div class='col-md-6'>
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio sapiente quos temporibus aperiam blanditiis quam et, aliquam officia nam nostrum, quae incidunt. Expedita, distinctio magni totam repellendus doloremque molestias ad.</p>
+                                    </div>
+                                    <div class='col-md-6'>
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio sapiente quos temporibus aperiam blanditiis quam et, aliquam officia nam nostrum, quae incidunt. Expedita, distinctio magni totam repellendus doloremque molestias ad.</p>
+                                    </div>
+                                </div>
+                </div>";
+            }
+        }
+    }
+}
+
 
 ?>

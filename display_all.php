@@ -19,7 +19,7 @@ include('functions/common_function.php');
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.php">Logo</a>
+                <a class="navbar-brand" href="#">Logo</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -80,7 +80,7 @@ include('functions/common_function.php');
                     <!-- Fetching products -->
                     <?php
                     // Calling function to get products
-                    getProducts();
+                    getAllProducts();
                     getUniqueCategories();
 
                     ?>
@@ -119,7 +119,6 @@ include('functions/common_function.php');
         </div>
 
 <!-- Last child -->
-        <!-- include footer -->
         <?php
             include("./includes/footer.php");
         ?>
