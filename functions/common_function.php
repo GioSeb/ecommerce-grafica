@@ -26,6 +26,7 @@ function getProducts(){
             <div class='card-body'>
                 <h5 class='card-title'>$product_title</h5>
                 <p class='card-text'>$product_description</p>
+                <p class='card-text'>Price: $product_price/-</p>
                 <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Agregar al carrito</a>
                 <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>Ver más</a>
             </div>
@@ -59,6 +60,7 @@ function getAllProducts(){
             <div class='card-body'>
                 <h5 class='card-title'>$product_title</h5>
                 <p class='card-text'>$product_description</p>
+                <p class='card-text'>Price: $product_price/-</p>
                 <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Agregar al carrito</a>
                 <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>Ver más</a>
             </div>
@@ -96,6 +98,7 @@ function getUniqueCategories(){
             <div class='card-body'>
                 <h5 class='card-title'>$product_title</h5>
                 <p class='card-text'>$product_description</p>
+                <p class='card-text'>Price: $product_price/-</p>
                 <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Agregar al carrito</a>
                 <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>Ver más</a>
             </div>
@@ -165,6 +168,7 @@ function search_product(){
                 <div class='card-body'>
                     <h5 class='card-title'>$product_title</h5>
                     <p class='card-text'>$product_description</p>
+                    <p class='card-text'>Price: $product_price/-</p>
                     <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Agregar al carrito</a>
                     <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>Ver más</a>
                 </div>
@@ -201,6 +205,7 @@ function viewDetails(){
                         <div class='card-body'>
                             <h5 class='card-title'>$product_title</h5>
                             <p class='card-text'>$product_description</p>
+                            <p class='card-text'>Price: $product_price/-</p>
                             <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Agregar al carrito</a>
                             
                         </div>
