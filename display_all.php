@@ -2,6 +2,8 @@
 <?php
 include('includes/connect.php');
 include('functions/common_function.php');
+/* cart function */
+cart();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +40,7 @@ include('functions/common_function.php');
                     <a class="nav-link" href="#">Contacto</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup>1</sup></a>
+                    <a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><?php cart_item() ?></sup></a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="#">Precio</a>
