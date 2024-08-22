@@ -294,4 +294,26 @@ function cart_item(){
         echo $num_of_rows;
     }
 
+// total price function
+
+function total_cart_price(){
+    global $con;
+    $total_price=0;
+    $get_ip_add = getIPAddress();
+    $cart_query = "SELECT * FROM `cart_details` WHERE ip_address='$get_ip_add'";
+    $result = mysqli_query($con, $cart_query);
+    while($row=mysqli_fetch_array($result)){
+        $product_id=$row['product_id'];
+        $select_products="SELECT * FROM `products` WHERE product_id='$product_id'";
+        $result_products=mysqli_query($con,$select_products);
+
+        while($row_product_price=mysqli_fetch_array($result_products)){
+            $product_price=array($row_product_price['product_price']);
+            $product_values=array_sum($product_price);
+            $total_price+=$product_values;
+        }
+    }
+    echo $total_price;
+}
+
 ?>
