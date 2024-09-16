@@ -40,7 +40,7 @@ cart();
                     <a class="nav-link" href="#">Contacto</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><?php cart_item() ?></sup></a>
+                    <a class="nav-link" href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><?php cart_item() ?></sup></a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="#">Precio: <?php total_cart_price(); ?>-/</a>
