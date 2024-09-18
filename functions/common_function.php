@@ -43,7 +43,7 @@ function getAllProducts(){
 
     // condition to check  category isset or not
     if(!isset($_GET['category'])){
-    $select_query="SELECT * FROM `products` ORDER BY product_title ORDER BY rand()";
+    $select_query="SELECT * FROM `products` ORDER BY product_title";
     $result_query=mysqli_query($con,$select_query);
     //$row=mysqli_fetch_assoc($result_query);
     //echo $row['product_title'];
@@ -316,3 +316,16 @@ function total_cart_price(){
     echo $total_price;
 }
 
+/* function remove_cart_item(){
+    global $con;
+    if(isset($_POST['remove_cart'])){
+        foreach($_POST['removeitem'] as $remove_id){
+            echo $remove_id;
+            $delete_query="DELETE FROM `cart_details` WHERE porduct_id=$remove_id";
+            $run_delete=mysqli_query($con, $delete_query);
+            if($run_delete){
+                echo "<script>window.open('cart.php','self')</script>";
+            }
+        }
+    }
+} */
