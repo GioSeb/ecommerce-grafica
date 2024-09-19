@@ -164,7 +164,7 @@ cart();
                             echo "<div class='d-flex mb-5'>
                 <h4 class='px-3'>Subtotal:<strong class='text-info'>$total_price</strong></h4>
                 <input type='submit' value='Continue Shopping' class='bg-info px-3 py-2 border-0 mx-3' name='continue_shopping'>
-                <a href='index.php'><button class='bg-secondary p-3 py-2  border-0 text-light'>Checkout</button></a>";
+                <button class='bg-secondary p-3 py-2  border-0 text-light'><a href='./users_area/checkout.php' class='text-light text-decoration-none''>Checkout</a></button>";
                 }else{
                     echo "<h2 class='text-center text-danger>Cart is empty</h2>";
                     echo "<input type='submit' value='Continue Shopping' class='bg-info px-3 py-2 border-0 mx-3' name='continue_shopping'>";
