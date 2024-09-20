@@ -1,3 +1,7 @@
+<?php 
+include('../includes/connect.php'); 
+include('../functions/common_function.php')
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,3 +77,48 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<!-- php code -->
+
+<?php
+
+if(isset($_POST['user_register'])){
+    $user_username=$_POST['user_username'];
+    $user_email=$_POST['user_email'];
+    $user_password=$_POST['user_password'];
+    $hash_password=password_hash($user_password, PASSWORD_DEFAULT);
+    $conf_user_password=$_POST['conf_user_password'];
+    $user_address=$_POST['user_address'];
+    $user_contact=$_POST['user_contact'];
+    $user_image=$_FILES['user_image']['name'];
+    $user_image_tmp=$_FILES['user_image']['tmp_name'];
+    $user_ip=getIPAddress();
+
+
+    //select query
+
+    $select_query="SELECT * FROM `user_table` WHERE username='$user_username' or user_email='$user_email'";
+    $result=mysqli_query($con, $select_query);
+    $rows_count=mysqli_num_rows($result);
+    if($rows_count>0){
+        echo "<script>alert('Username or email already exist')</script>";
+    }elseif($user_password!=$conf_user_password){
+        echo "<script>alert('Passwords do not match')</script>";
+    }
+    else{
+        // insert_query
+    move_uploaded_file($user_image_tmp, "./user_images/$user_image");
+    $insert_query="INSERT INTO `user_table` (username, user_email, user_password, user_ip, user_address, user_mobile, user_image) VALUES  ('$user_username', '$user_email', '$hash_password', '$user_ip', '$user_address', '$user_contact', '$user_image')";
+    $sql_execute=mysqli_query($con, $insert_query);
+    }
+
+    if($sql_execute){
+        echo "<script>alert('Data inserted successfully')</script>"; //TODO
+    }else{
+        die(mysqli_error($con));
+    }
+
+}
+
+
+?>
